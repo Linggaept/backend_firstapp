@@ -29,9 +29,6 @@ const authController = {
       if (!email || !password) {
         return res.status(400).json({ message: "Email and password are required" });
       }
-      if (err || results.length === 0) {
-        return res.status(401).json({ message: "Invalid email or password" });
-      }
 
       const user = results[0];
       
