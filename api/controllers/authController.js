@@ -24,16 +24,13 @@ const authController = {
   },
 
   login: (req, res) => {
-    const { kodeAgen, password } = req.body;
-    User.findByKodeAgen(kodeAgen, (err, results) => {
-      if(kodeAgen.length < 8) {
-        return res.status(400).json({ message: "Kode Agen must be at least 8 characters long" });
-      }
-      if (!kodeAgen || !password) {
-        return res.status(400).json({ message: "Kode Agen and password are required" });
+    const { email, password } = req.body;
+    User.findByEmail(email, (err, results) => {
+      if (!email || !password) {
+        return res.status(400).json({ message: "Email and password are required" });
       }
       if (err || results.length === 0) {
-        return res.status(401).json({ message: "Invalid kode agen or password" });
+        return res.status(401).json({ message: "Invalid email or password" });
       }
 
       const user = results[0];

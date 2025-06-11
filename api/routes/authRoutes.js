@@ -13,7 +13,7 @@ const validateRegister = [
 ];
 
 const validateLogin = [
-  body("kodeAgen").notEmpty().withMessage("Kode Agen is required"),
+  body("email").isEmail().withMessage("Invalid email format"),
   body("password").notEmpty().withMessage("Password is required"),
 ];
 
